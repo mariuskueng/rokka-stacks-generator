@@ -33,6 +33,9 @@ function mapStyleSizes(definition: StyleDefinition): StackDefinition[] {
     const ratio = ratioH / ratioW;
     const mode = definition.mode || 'fill';
     const crop = !!definition.crop;
+    const composition = definition.composition || undefined;
+    const secondary_opacity = definition.secondary_opacity || undefined;
+    const secondary_color = definition.secondary_color || undefined;
 
     return sizes.map((size) => {
         const width = size;
@@ -43,7 +46,10 @@ function mapStyleSizes(definition: StyleDefinition): StackDefinition[] {
             width,
             height,
             mode,
-            crop
+            crop,
+            composition,
+            secondary_opacity,
+            secondary_color
         };
     });
 }

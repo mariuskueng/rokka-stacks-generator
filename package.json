@@ -1,6 +1,6 @@
 {
     "name": "rokka-stacks-generator",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Generate and upload rokka.io stacks based on yml files in a component folder.",
     "main": "./dist/index.js",
     "bin": {

@@ -30,6 +30,9 @@ export interface StyleDefinition {
     sizes?: number[];
     pictures?: Record<string, ViewportSize>;
     viewport: Viewport;
+    composition?: string;
+    secondary_opacity?: number;
+    secondary_color?: string;
 }
 
 export interface StackDefinition {
@@ -39,6 +42,9 @@ export interface StackDefinition {
     viewport?: string;
     mode?: string;
     crop?: boolean;
+    composition?: string;
+    secondary_opacity?: number;
+    secondary_color?: string;
 }
 
 export interface Style {
@@ -72,6 +78,15 @@ export default class RokkaHandler {
                 this.client.operations.crop(stack.width, stack.height, {
                     anchor: 'auto',
                     mode: 'absolute'
+                })
+            );
+        }
+
+        if (stack.composition) {
+            operations.push(
+                this.client.operations.composition(stack.width, stack.height, stack.composition, {
+                    secondary_opacity: stack.secondary_opacity,
+                    secondary_color: stack.secondary_color
                 })
             );
         }
